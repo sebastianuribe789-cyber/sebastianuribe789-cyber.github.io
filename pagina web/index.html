@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./COCOESNAILS (1).png" type="image/png">
+    <title>COCOES STUDIO NAILS</title>
+    <style>
+        /* ===================== ESTILOS GENERALES ===================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: #e6a98b;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===================== HEADER / NAVEGACIÓN ===================== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+
+        .logo img {
+            height: 100px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            font-size: 20px;
+            display: inline-block;
+            position: relative;
+            color: #e6a98b;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #e6a98b;
+            transition: 1.0s ease-out;
+        }
+
+        /* línea escondida */
+        .nav-menu a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 0%;
+        height: 2px;
+        background-color: #FFDAB9;
+        transition: width 0.3s;
+}
+
+/* cuando pasas el mouse */
+        .nav-menu a:hover {
+        color: #FFDAB9;
+        }  
+
+        .nav-menu a:hover::after {
+        width: 100%;
+        }
+
+        /* ===================== HERO / BANNER PRINCIPAL ===================== */
+
+
+        .hero {
+            background-color: #e6a98b;
+            width: 100%;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        p {
+            color: #fff;
+            font: 30px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: #fff;
+            color: #e6a98b;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: opacity 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #fff;
+            box-shadow: 20px 10px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ===================== SECCIÓN DE PRODUCTOS ===================== */
+        .productos {
+            padding: 60px 0;
+        }
+
+        .productos h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* ===================== TARJETA DE PRODUCTO ===================== */
+        .tarjeta {
+            background-color: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .tarjeta:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .tarjeta-imagen {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999999;
+        }
+
+        .tarjeta-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tarjeta-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tarjeta-info {
+            padding: 20px;
+        }
+
+        .tarjeta-info h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .tarjeta-info p {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 15px;
+        }
+
+        .tarjeta-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .precio {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+
+        .btn-comprar {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .btn-comprar:hover {
+            opacity: 0.8;
+        }
+
+        /* ===================== SECCIÓN SOBRE NOSOTROS ===================== */
+        .sobre-nosotros {
+            background-color: #f5f5f5;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .sobre-nosotros h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .sobre-nosotros p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666666;
+            font-size: 18px;
+        }
+
+        /* ===================== FOOTER ===================== */
+        footer {
+            background-color: #ffffff;
+            border-top: 1px solid #e5e5e5;
+            padding: 50px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 10px;
+            color: #666666;
+        }
+
+        .footer-col a {
+            color: #666666;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: #1a1a1a;
+        }
+
+        .redes-sociales {
+            display: flex;
+            gap: 15px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #e5e5e5;
+            color: #666666;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: static; /* 🔥 clave */
+        width: 100%;
+        align-items: center;
+    }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===================== HEADER / NAVEGACIÓN ===================== -->
+    <header>
+        <div class="container">
+            <nav>
+                <!-- Logo - Edita el nombre de tu tienda aquí -->
+                <div class="logo">
+                    <img src="./COCOESNAILS (1).png" alt="logo cocoes">
+                </div>
+                
+                <!-- Menú de navegación -->
+                <ul class="nav-menu">
+                    <li><a href="https://co.pinterest.com/cocoes_studionails/cocoes-nails-art/" target="_blank">Mi pinterest</a></li>
+                    <li><a href="https://www.facebook.com/cocoesstudionails/" target="_blank">Mi facebook</a></li>
+                    <li><a href="https://www.instagram.com/cocoes_studionails?igsh=Nmp0NGtnOTZzM2I2" target="_blank">Mi Instagram</a></li>
+                    <li><a href="https://wa.me/573132901586?text=Hola%20quiero%20agendar%20una%20cita" target="_blank">
+                    Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===================== HERO / BANNER PRINCIPAL ===================== -->
+    <section class="hero">
+        <div class="container">
+            <h1>COCOES STUDIO NAILS</h1>
+            <p>UÑAS SEGURAS Y LINDAS - CALIDAD + SALUD + DISEÑO</p>
+            <a class="btn-primary" href="https://wa.me/573132901586?text=Hola%20quiero%20agendar%20una%20cita" target="_blank">
+            AGENDA AHORA
+            </a>
+        </div>
+    </section>
+
+    <!-- ===================== SECCIÓN DE PRODUCTOS ===================== -->
+    <section class="productos">
+        <div class="container">
+            <h2>NUESTROS PRODUCTOS</h2>
+            
+            <div class="grid-productos">
+
+                <!-- TARJETA PRODUCTO 1 -->
+                <div class="tarjeta">
+                    <div class="tarjeta-imagen">
+                        <img src="./WhatsApp Image 2026-03-27 at 7.26.46 PM.jpeg" alt="Producto 1">
+                    </div>
+                    <div class="tarjeta-info">
+                        <h3>flor en 3D</h3>
+                        <p>flor elaborada en gel solido</p>
+                        <div class="tarjeta-footer">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TARJETA PRODUCTO 2 -->
+                <div class="tarjeta">
+                    <div class="tarjeta-imagen">
+                        <img src="./WhatsApp Image 2026-03-30 at 11.19.11 AM.jpeg" alt="producto 2">
+                    </div>
+                    <div class="tarjeta-info">
+                        <h3>decoracion a mano alzada</h3>
+                        <p></p>
+                        <div class="tarjeta-footer">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TARJETA PRODUCTO 3 -->
+                <div class="tarjeta">
+                    <div class="tarjeta-imagen">
+                        <img src="./WhatsApp Image 2026-03-27 at 7.26.47 PM.jpeg" alt="producto 3">
+                    </div>
+                    <div class="tarjeta-info">
+                        <h3>decoracion a mano alzada</h3>
+                        <p></p>
+                        <div class="tarjeta-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== SECCIÓN SOBRE NOSOTROS ===================== -->
+    <section class="sobre-nosotros">
+        <div class="container">
+            <h2>SOBRE NOSOTROS</h2>
+            <p>COCOES Studio Nails • Ibagué
+            ✨ Uñas semi‑permanentes con arte único
+            🎨 Diseños 3D, gel, foil y glitter
+            📆 Reservas abiertas | DM 👇
+            🔗 linktr.ee/cocoes_studionails</p>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                
+                <!-- Columna 1 - Contacto -->
+                <div class="footer-col">
+                    <h4>CONTACTO</h4>
+                    <ul>
+                        <li>Calle 129 No. 5-150
+                            Ciudad Torreon El Cipres Torre 9 Apto 901
+                            Ibague Tolima Colombia
+                        </li>
+                        <li>+57 3132901586</li>
+                        <li></li>
+                    </ul>
+                </div>
+                
+                <!-- Columna 2 - Enlaces -->
+                <div class="footer-col">
+                    <h4>ENLACES</h4>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Productos</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="https://www.google.com/maps/place/Cocoes+Studio+Nails/@4.4442256,-75.1560609,17z/data=!3m1!4b1!4m6!3m5!1s0x8e38c5ef4e526baf:0x7fdbb66b5a50f204!8m2!3d4.4442256!4d-75.1560609!16s%2Fg%2F11z7l_kl1c?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank"">Google maps</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Columna 3 - Redes sociales -->
+                <div class="footer-col">
+                    <h4>SÍGUENOS</h4>
+                    <div class="redes-sociales">
+                        <a href="https://www.facebook.com/cocoesstudionails/" target="_blank">Facebook</a>
+                        <a href="https://www.instagram.com/cocoes_studionails?igsh=Nmp0NGtnOTZzM2I2" target="_blank">Instagram</a>
+                        <a href="https://co.pinterest.com/cocoes_studionails/cocoes-nails-art/" target="_blank">pinterest</a>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 Tu Empresa. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
